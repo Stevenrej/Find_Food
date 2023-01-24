@@ -152,7 +152,6 @@ const App = () => {
             title='See Locations Near You'
             style={styles.buttonList}
             onPress={() => setListVisible(true)}>
-            {console.log(setListVisible, listVisible)}
           </Button>
           {location && (
             <MapView
@@ -201,8 +200,6 @@ const App = () => {
                       source={'https://reactnative.dev/img/tiny_logo.png'}
                     />
                     <Text style={styles.modalTextTitle}>{selectedMarker.name}</Text>
-                    {console.log(selectedMarker)}
-                    {/* <Text>{selectedMarker?.types[0]}</Text> */}
                     <Text style={styles.modalText}>Address: {selectedMarker.vicinity}</Text>
                     <Text style={styles.modalText}>Price: {
                       (() => {
@@ -222,7 +219,6 @@ const App = () => {
                         }
                       })()
                     }</Text>
-                    {/* <Text  style={styles.modalText}>{selectedMarker.opening_hours.open_now ? 'Open!' : 'Closed'}</Text> */}
                     <Rating
                       style={styles.modalText}
                       ratingCount={5}
