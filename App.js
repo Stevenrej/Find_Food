@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { View, Modal, TouchableOpacity, Text, Button, StyleSheet, Pressable, Image, ScrollView, ActivityIndicator } from 'react-native';
 import * as Location from 'expo-location';
@@ -40,7 +40,7 @@ const App = () => {
     },
     modalView: {
       margin: 20,
-      marginTop: 390,
+      marginTop: 490,
       marginBottom: 50,
       backgroundColor: 'white',
       borderRadius: 20,
@@ -111,6 +111,17 @@ const App = () => {
     },
   });
 
+  function animateToLocation(latitude, longitude) {
+    mapRef.current.animateToRegion({
+      latitude: latitude,
+      longitude: longitude,
+      latitudeDelta: 0.00461,
+      longitudeDelta: 0.00105,
+    }, 1000); // 1000 is the duration of the animation in milliseconds
+  }
+
+  const mapRef = useRef(null);
+
   useEffect(() => {
     setIsLoading(true);
     (async () => {
@@ -130,9 +141,9 @@ const App = () => {
   return (
     <View style={{ flex: 1 }}>
       {isLoading ? (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-          <ActivityIndicator size="large" color="#228B22" />
-          <Text style={styles.modalTextTitle}>Loading Your Next Meal</Text>
+        <View style={{ flex: 1, backgroundColor: 'green', alignItems: "center", justifyContent: "center" }}>
+          <ActivityIndicator size="large" color="white" />
+          <Text style={styles.textStyle}>Loading Your Next Meal</Text>
         </View>
       ) : (
         <View style={{ flex: 1 }}>
@@ -145,18 +156,18 @@ const App = () => {
           </Button>
           {location && (
             <MapView
-            showsTraffic={true}
+              ref={mapRef}
+              showsTraffic={true}
               style={{ flex: 1 }}
               initialRegion={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
+                latitudeDelta: 0.04522,
+                longitudeDelta: 0.0221,
               }}
               showsUserLocation={true}
-              
             >
-              
+
               {transport && transport.map((item, index) => (
                 <Marker
                   key={index}
@@ -167,7 +178,10 @@ const App = () => {
                   onPress={() => {
                     setModalVisible(true);
                     setSelectedMarker(item);
+                    animateToLocation(item.geometry.location.lat, item.geometry.location.lng);
                   }}
+
+
                 />
               ))}
             </MapView>
@@ -243,10 +257,13 @@ const App = () => {
               <ScrollView>
                 {transport && transport.map((item, index) => (
                   <TouchableOpacity
+                    key={index}
                     onPress={() => {
                       setModalVisible(true);
                       setSelectedMarker(item);
                       setListVisible(false);
+                      animateToLocation(item.geometry.location.lat, item.geometry.location.lng);
+
                     }}
                   >
                     <Text style={styles.modalTextTitle} key={index}>
@@ -262,7 +279,6 @@ const App = () => {
               </Pressable>
             </View>
           </Modal>
-
         </View>
       )}
     </View >
