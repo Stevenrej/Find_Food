@@ -19,3 +19,5 @@ Note
 The API key for the Google Places API is required to run this application. You can obtain a key by following the instructions here: https://developers.google.com/maps/gmp-get-started#create-project
 
 Please make sure to keep your API key secure and do not share it with anyone.
+
+![Expo Link](https://expo.dev/accounts/stevenrej/projects/expo-test/builds/f8bcbf53-be1e-4d2a-9bc2-ecedb9e67af1)
