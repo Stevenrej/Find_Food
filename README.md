@@ -26,4 +26,4 @@ dotenv
 
 The application also uses the useState, useEffect and useRef hooks to handle component state and animation respectively. StyleSheet is also used for styling the components.
 
-[Expo Link]([https://expo.dev/accounts/stevenrej/projects/expo-test/builds/f8bcbf53-be1e-4d2a-9bc2-ecedb9e67af1](https://expo.dev/@stevenrej/expo-test?serviceType=classic&distribution=expo-go))
+[Expo Link](https://expo.dev/@stevenrej/expo-test?serviceType=classic&distribution=expo-go)
