@@ -20,4 +20,4 @@ The API key for the Google Places API is required to run this application. You c
 
 Please make sure to keep your API key secure and do not share it with anyone.
 
-![Expo Link](https://expo.dev/accounts/stevenrej/projects/expo-test/builds/f8bcbf53-be1e-4d2a-9bc2-ecedb9e67af1)
+[Expo Link](https://expo.dev/accounts/stevenrej/projects/expo-test/builds/f8bcbf53-be1e-4d2a-9bc2-ecedb9e67af1)
